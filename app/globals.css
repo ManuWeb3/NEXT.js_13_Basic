@@ -1,0 +1,63 @@
+/* https://tailwindcss.com/docs/functions-and-directives */
+
+/*
+Keep only those elements that are truly global.
+Anything specific to a component somewhere else
+*/
+/* @layer. Use the @layer directive to tell Tailwind which “bucket” a set of custom styles belong to. Valid layers are base , components , and utilities */
+
+/**
+ * This injects Tailwind's base styles and any base styles registered by
+ * plugins. (e.g. poppins - kind of plugin)
+ */
+@tailwind base;
+/**
+ * This injects Tailwind's component classes and any component classes
+ * registered by plugins.
+ */
+@tailwind components;
+/**
+ * This injects Tailwind's utility classes and any utility classes registered
+ * by plugins.
+ */
+@tailwind utilities;
+/**
+ * Use this directive to control where Tailwind injects the hover, focus,
+ * responsive, dark mode, and other variants of each class.
+ *
+ * If omitted, Tailwind will append these classes to the very end of
+ * your stylesheet by default.
+ */
+@tailwind variants;
+
+/*
+Default setting: Light mode
+*/
+:root {
+  --foreground-rgb: 0, 0, 0;
+}
+
+/*
+Check whether Dark mode enabled
+*/
+@media (prefers-color-scheme: dark) {
+  :root {
+    --foreground-rgb: 255, 255, 255;
+  }
+}
+
+/*
+only --foreground-rgb is used in the body element 
+No bg-start/end unlike above as that was being used earlier in our Home page's gradiemnt ???
+*/
+body {
+  color: rgb(var(--foreground-rgb));
+  /* padding: 1rem; */
+  /* border: 5px solid black; */
+  /* margin: 1%; */
+}
+@layer base {
+  h1 {
+    @apply font-extrabold text-2xl mb-3 font-poppins;
+  }
+}
